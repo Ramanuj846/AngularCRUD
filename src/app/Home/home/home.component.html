@@ -1,0 +1,152 @@
+<div class="card mt-2">
+    <div class="card-header">
+        <div class="d-flex justify-content-between">
+            <h3> 
+                100m Mens Record
+            </h3>
+
+            <button type="button" class="btn btn-primary btn-sm" data-bs-target="#exampleModal1" data-bs-toggle="modal">Add Mens Record</button>
+        </div>
+
+        
+    </div>
+    <div class="card-body">
+        <table class="table table-striped mt-2">
+            <thead>
+              <tr>
+                <th style="display: none;">ID</th>
+                <th scope="col">Ranking</th>
+                <th scope="col">Name</th>
+                <th scope="col">Country</th>
+                <th scope="col">Score</th>
+                <th scope="col">Delete</th>
+                <th scope="col">Update</th>
+
+        
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of dataStored">
+                <td scope="col" style="display: none;">{{item.id}}</td>
+
+                <td scope="col">{{item.ranking}}</td>
+                <td scope="col">{{item.name}}</td>
+                <td scope="col">{{item.country}}</td>
+                <td scope="col">{{item.score}}</td>
+                <td scope="col">
+                    <button class="btn btn-danger">Delete</button>
+                </td>
+                <td scope="col">
+                    <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo" (click)="updateMensPatch(item,item._id)">Update</button>
+        
+                </td>
+        
+              </tr>
+        
+          
+            </tbody>
+          </table>
+    </div>
+  </div>
+<!-- 
+  <div [ngStyle]="{'background-color':'green'}">
+    This is ng style directive
+  </div> -->
+
+
+<!-- 
+  <ng-template [ngIf]="isDataAvailable">
+        Data Available
+  </ng-template> -->
+<!-- 
+  <ng-template [ngFor] let-emp [ngForOf]="dataStored">
+    {{emp.ranking}} <br>
+    {{emp.score}}<br>
+    {{emp.name}}<br>
+    {{emp.country}}
+
+  </ng-template> -->
+
+
+  <ng-container>
+    Container Element
+  </ng-container>
+
+
+
+<!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Open modal for @mdo</button> -->
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Update Mens Record</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="updateMensRecordForm">
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Ranking:</label>
+            <input type="text" class="form-control" id="recipient-name" formControlName="ranking">
+          </div>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Name:</label>
+            <input type="text" class="form-control" id="recipient-name" formControlName="names">
+          </div>
+          
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Country</label>
+            <input type="text" class="form-control" id="recipient-name" formControlName="country">
+          </div>
+
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Score:</label>
+            <input type="text" class="form-control" id="recipient-name" formControlName="score">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="updateRecord()">Update</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Add Mens Record</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="mensRecordForm">
+            <div class="mb-3">
+              <label for="recipient-name" class="col-form-label">Ranking:</label>
+              <input type="text" class="form-control" id="recipient-name" formControlName="ranking">
+            </div>
+            <div class="mb-3">
+              <label for="recipient-name" class="col-form-label">Name:</label>
+              <input type="text" class="form-control" id="recipient-name" formControlName="names">
+            </div>
+            
+            <div class="mb-3">
+              <label for="recipient-name" class="col-form-label">Country</label>
+              <input type="text" class="form-control" id="recipient-name" formControlName="country">
+            </div>
+  
+            <div class="mb-3">
+              <label for="recipient-name" class="col-form-label">Score:</label>
+              <input type="text" class="form-control" id="recipient-name" formControlName="score">
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" (click)="ceateMensRecord()">Create</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
